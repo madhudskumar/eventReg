@@ -8,16 +8,33 @@
     <link rel="stylesheet" href="./css/app.css">
     <link rel="icon" href="./css/glyphicons-halflings-regular.svg">
 </head>
-<body ng-app="eventsApp">
+<body ng-app="eventsApp" ng-cloak>
 
-    <div class="container">
+    <div class="container" ng-controller="EventCtrl">
         <div class="navbar">
-            <ul class="nav">
-
+            <ul class="nav nav-tabs nav-justified">
+                <li class="presentation">
+                    <h2 ng-bind-html="snippet"></h2>
+                </li>
             </ul>
         </div>
     </div>
 
+    <!--ng-show/ng-hide-->
+    <div class="container">
+        <div class="jumbotron" ng-controller="EventCtrl" ng-style="myStyle">
+            <h1 class="well" ng-show="boolVal" ng-click="invert(this)">hello</h1>
+            <h1 class="well" ng-hide="boolVal" ng-click="invert(this)">hi!</h1>
+            <button type="button" class="btn btn-group-justified btn-primary" ng-disabled="btnDisabled">save</button>
+        </div>
+    </div>
+    <!---->
+
+    <!--angular filers | uppercase | lowercase | currency | date | number | json-->
+    <!--<h2 class="jumbotron">{{13+13 | date}}</h2>-->
+    <!--<h2 class="jumbotron">{{3.141536458 | number:7}}</h2>-->
+    <!--<h2>{{{name:12 , cal:'hi', rouge:[12.13]  }| json}}</h2>-->
+    <!---->
 
     <div ng-controller="EventCtrl" class="container evt">
         <div class="row">
@@ -25,7 +42,24 @@
                 <img ng-src="{{event.img}}" alt="{{event.name}}">
             </div>
             <div   class="col-md-6">
-                <h1><strong>{{event.name}}</strong></h1>
+
+                <!--ng-bind-->
+                <!--<h1><strong ng-bind="event.name"></strong></h1>-->
+                <!---->
+
+                <!--ng-bind-template-->
+                <!--<h1><strong ng-bind-template="{{event.name}} {{event.author}}"></strong></h1>-->
+                <!---->
+
+                <!--ng-bind-html-->
+                <!--<h2 ng-bind-html="snippet">text here</h2>-->
+                <!---->
+
+                <!--ng-nonBindable-->
+                <!--<h2 class="container" ng-non-bindable>{{1+2+3}}</h2>-->
+                <!---->
+
+                <h1><strong>{{event.name | uppercase}}</strong></h1>
                 <h2>{{event.version}}</h2>
                 <h2>{{event.author}}</h2>
                 <h3>mail to <a href="mailto:{{event.email}}">me</a></h3>
@@ -42,7 +76,17 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>SESSIONS</h1>
-                <div class="row" ng-repeat="sessions in event.sessions">
+                <p>sortOrder</p>
+                <select ng-model="sortOrder" class="input">
+                    <option selected value="name">name</option>
+                    <option value="-upVote">vote</option>
+                </select>
+
+                <select ng-model="query.difficulty" class="input">
+                    <option selected value="all">all</option>
+                    <option value="intro">intro</option>
+                </select>
+                <div class="row" ng-repeat="sessions in event.sessions | orderBy:sortOrder | filter:query"  ng-class-even="myClass">
                     <div class="evnts col-lg-1">
                         <span class="glyphicon glyphicon-chevron-up up" ng-click="voteAdd(sessions)"></span>
                         <h3 class="cntr">{{sessions.upVote}}</h3>
@@ -54,16 +98,19 @@
                         <p>CREATOR: {{sessions.creator}}</p> <br>
                         <p>DURATION: {{sessions.duration}}</p> <br>
                         <p>LEVEL: {{sessions.level}}</p> <br>
+                        <p>difficulty: {{sessions.difficulty}}</p> <br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+
     <script src="lib/jquery.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/angular.min.js"></script>
-    <!--script src="lib/angular.js"></script-->
+    <script src="lib/angular-sanitize.min.js"></script>
     <script src="js/app.js"></script>
     <script src="controller/EventCtrl.js"></script>
 </body>

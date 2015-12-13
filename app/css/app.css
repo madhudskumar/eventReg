@@ -1,6 +1,6 @@
 
 body{
-    background-color: ghostwhite;
+    background-color: coral;
 }
 
 .navbar{
@@ -31,8 +31,7 @@ ul li{
 }
 
 .well{
-    background-color: blue;
-    box-shadow: blue inset -2px;
+    cursor: pointer;
 }
 
 .up, .down{
@@ -44,4 +43,13 @@ ul li{
 
 .cntr{
     padding:12px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+    background-color: white;
+}
+
+.blue{
+    background-color: #0d3349;
 }

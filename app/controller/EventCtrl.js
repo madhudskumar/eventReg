@@ -1,6 +1,12 @@
 'use strict';
 
 eventsApp.controller('EventCtrl', function ($scope) {
+    $scope.snippet = '<span class="container" style="color: darkslateblue;">tabs</span>';
+
+    $scope.boolVal = true;
+
+    $scope.sortOrder = "name";
+
     $scope.event = {
         name: 'My little angular app',
         version: '0.0.01',
@@ -19,6 +25,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
                 creator:'williams',
                 duration:'1 hr',
                 level:12,
+                difficulty:"intro",
                 upVote:0
             },
             {
@@ -26,6 +33,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
                 creator:'williams',
                 duration:'1 hr',
                 level:21,
+                difficulty:"advanced",
                 upVote:0
             },
             {
@@ -33,6 +41,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
                 creator:'williams',
                 duration:'1 hr',
                 level:4,
+                difficulty:"expr",
                 upVote:0
             }
         ]
@@ -47,4 +56,11 @@ eventsApp.controller('EventCtrl', function ($scope) {
         else sessions.upVote--;
     };
 
+    $scope.invert = function(){
+        this.boolVal = !this.boolVal;
+    }
+
+    $scope.myStyle = {color:'blue'};
+    $scope.myClass = 'blue';
+    $scope.btnDisabled = true;
 });
