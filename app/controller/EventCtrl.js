@@ -23,7 +23,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
             {
                 name:'my rampage',
                 creator:'williams',
-                duration:'1 hr',
+                duration:1,
                 level:12,
                 difficulty:"intro",
                 upVote:0
@@ -31,7 +31,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
             {
                 name:'pesistance of life',
                 creator:'williams',
-                duration:'1 hr',
+                duration:'2',
                 level:21,
                 difficulty:"advanced",
                 upVote:0
@@ -39,7 +39,7 @@ eventsApp.controller('EventCtrl', function ($scope) {
             {
                 name:'live in the dom',
                 creator:'williams',
-                duration:'1 hr',
+                duration:3,
                 level:4,
                 difficulty:"expr",
                 upVote:0

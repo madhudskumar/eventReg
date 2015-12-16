@@ -96,7 +96,7 @@
                     <div class="thumbnail evnts col-lg-10">
                         <h1>NAME: {{sessions.name}}</h1> <br>
                         <p>CREATOR: {{sessions.creator}}</p> <br>
-                        <p>DURATION: {{sessions.duration}}</p> <br>
+                        <p>DURATION: {{sessions.duration | durations}}</p> <br>
                         <p>LEVEL: {{sessions.level}}</p> <br>
                         <p>difficulty: {{sessions.difficulty}}</p> <br>
                     </div>
@@ -112,6 +112,7 @@
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-sanitize.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/duration.js"></script>
     <script src="controller/EventCtrl.js"></script>
 </body>
 </html>
