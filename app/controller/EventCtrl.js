@@ -1,66 +1,45 @@
 'use strict';
 
-eventsApp.controller('EventCtrl', function ($scope) {
-    $scope.snippet = '<span class="container" style="color: darkslateblue;">tabs</span>';
+eventsApp.controller('EventCtrl',
+    function EventCtrl ($scope, eventData, $anchorScroll) {
+        $scope.snippet = '<span class="container" style="color: darkslateblue;">tabs</span>';
 
-    $scope.boolVal = true;
+        $scope.boolVal = true;
 
-    $scope.sortOrder = "name";
+        $scope.sortOrder = "name";
 
-    $scope.event = {
-        name: 'My little angular app',
-        version: '0.0.01',
-        author: 'Madhu Kumar D S',
-        email: 'madhudskumar@live.in',
-        location:{
-            address:"#4139 behind anjeneya temple road",
-            city:"Davangere",
-            state:"karnataka"
-        },
-        img: 'img/img.png',
+        $scope.event = eventData
+            .getEvent()
+            .then(
+                function (event) {
+                    $scope.event = event;
+                    console.log(event);
+                },
+                function (response) {
+                    console.log(response);
+                }
+            );
 
-        sessions:[
-            {
-                name:'my rampage',
-                creator:'williams',
-                duration:1,
-                level:12,
-                difficulty:"intro",
-                upVote:0
-            },
-            {
-                name:'pesistance of life',
-                creator:'williams',
-                duration:'2',
-                level:21,
-                difficulty:"advanced",
-                upVote:0
-            },
-            {
-                name:'live in the dom',
-                creator:'williams',
-                duration:3,
-                level:4,
-                difficulty:"expr",
-                upVote:0
-            }
-        ]
-    };
 
-    $scope.voteAdd = function(sessions){
-        sessions.upVote++;
-    };
 
-    $scope.voteSub = function (sessions) {
-        if(sessions.upVote == 0) sessions.upVote = 0;
-        else sessions.upVote--;
-    };
+        $scope.voteAdd = function(sessions,event){
+            sessions.upVoteCount++;
+        };
 
-    $scope.invert = function(){
-        this.boolVal = !this.boolVal;
-    }
+        $scope.voteSub = function (sessions) {
+            if(sessions.upVote == 0) sessions.upVoteCount = 0;
+            else sessions.upVote--;
+        };
 
-    $scope.myStyle = {color:'blue'};
-    $scope.myClass = 'blue';
-    $scope.btnDisabled = true;
-});
+        $scope.invert = function(event){
+            this.boolVal = !this.boolVal;
+        };
+
+        $scope.scroll = function(){
+            $anchorScroll();
+        };
+
+        $scope.myStyle = {color:'lightPink'};
+        $scope.myClass = 'lightPink';
+        $scope.btnDisabled = true;
+    });

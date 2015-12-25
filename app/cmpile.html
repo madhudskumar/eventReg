@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        REG
+    </title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body ng-app="eventsApp" ng-cloak>
+
+    <div class="container" ng-controller="cmpileCtrl">
+        <div id="appendHere"></div>
+        name:<input type="text" class="input-lg" ng-model="name">
+        cmpl:<input class="input-lg" type="text" ng-name="markup">
+        <button class="btn" ng-click="appendDivToElement(markup)">append</button>
+    </div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-sanitize.min.js"></script>
+<script src="lib/angular-resource.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/duration.js"></script>
+<script src="controller/cmpileCtrl.js"></script>
+</body>
+</html>

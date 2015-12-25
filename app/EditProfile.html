@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        EVENT RESESTRATION ANGULAR APP
+    </title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body ng-app="eventsApp" ng-cloak>
+
+<div class="container-fluid container" ng-controller="EditProfileCtrl">
+<form name="profileForm">
+    <div class="row">
+        <div class="col-lg-3">
+            <img ng-src="{{getGravatarUrl(user.emailAddress)}}"/>
+        </div>
+        <div class="col-7">
+            <fieldset class="input-group">
+                <label for="userName" class="input-group-addon">User Name:</label>
+                <input focus id="userName" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Username" ng-model="user.userName" class="form-control" />
+                <label for="password" class="input-group-addon">Password:</label>
+                <input id="password" required type="password" placeholder="Password" ng-model="user.password" class="form-control"/>
+            </fieldset>
+            <div style="margin-top:15px">
+                <fieldset class="input-group">
+                    <label for="name" class="input-group-addon">Name:</label>
+                    <input id="name" type="text" placeholder="Name" ng-model="user.name" class="form-control"/>
+                    <label for="emailAddress" class="input-group-addon">Email Address:</label>
+                    <input id="emailAddress" type="email" placeholder="Email Address" ng-model="user.emailAddress" class="form-control"/>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row-fluid">
+        <div class="input-group">
+            <label for="bio" class="input-group-addon">Bio:</label>
+            <textarea id="bio" rows="6" style="width:97%; color:#52575c" placeholder="Bio" ng-model="user.bio" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset3">
+            <div class="pull-left"><span class="btn">Cancel</span></div>
+            <div class="pull-right"><button type="submit" class="btn btn-primary">Save</button></div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-sanitize.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services/EventData.js"></script>
+<script src="js/services/gravatarUrlBuilder.js"></script>
+<script src="js/duration.js"></script>
+<script src="controller/EditProfile.js"></script>
+</body>
+</html>
