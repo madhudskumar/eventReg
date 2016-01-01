@@ -10,12 +10,14 @@
 </head>
 <body ng-app="eventsApp" ng-cloak>
 
-    <div class="container" ng-controller="cmpileCtrl">
-        <div id="appendHere" class="jumbotron"></div>
-        name:<input type="text" class="input-lg" ng-model="name">
-        cmpl:<input class="input-lg" type="text" ng-model="markup">
-        <button class="btn" ng-click="appendDivToElement(markup)">append</button>
+<div class="container" ng-controller="FilterCtrl">
+    <div class="container">
+        <h1>duration : 1 : {{data.duration1}}</h1>
+        <h1>duration : 2 : {{data.duration2}}</h1>
+        <h1>duration : 3 : {{data.duration3}}</h1>
+        <h1>duration : 4 : {{data.duration4}}</h1>
     </div>
+</div>
 
 <script src="lib/jquery.min.js"></script>
 <script src="lib/bootstrap.min.js"></script>
@@ -23,7 +25,8 @@
 <script src="lib/angular-sanitize.min.js"></script>
 <script src="lib/angular-resource.min.js"></script>
 <script src="js/app.js"></script>
+<!--// duration fiter-->
 <script src="js/duration.js"></script>
-<script src="controller/cmpileCtrl.js"></script>
+<script src="controller/FilterCtrl.js"></script>
 </body>
 </html>

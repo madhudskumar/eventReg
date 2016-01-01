@@ -8,6 +8,8 @@ eventsApp.filter('durations' , function(){
          case 2 : return '2:00:00 hrs';
 
          case 3 : return '3:00:00 hrs';
+
+         default : return '0:00:00 hrs';
      }
  }
 });
