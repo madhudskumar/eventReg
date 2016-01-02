@@ -1,7 +1,7 @@
 'use strict';
 
-eventsApp.controller('EventCtrl',
-    function EventCtrl ($scope, eventData, $anchorScroll, $routeParams) {
+eventsApp.controller('AllEventCtrl',
+    function EventCtrl ($scope, eventData, $anchorScroll, $route) {
         $scope.snippet = '<span class="container" style="color: darkslateblue;">tabs</span>';
 
         $scope.boolVal = true;
@@ -9,7 +9,7 @@ eventsApp.controller('EventCtrl',
         $scope.sortOrder = "name";
 
         $scope.event = eventData
-            .getEvent($routeParams.eventId)
+            .getAll()
             .then(
                 function (event) {
                     $scope.event = event;
@@ -19,6 +19,11 @@ eventsApp.controller('EventCtrl',
                     console.log(response);
                 }
             );
+
+        $scope.reload = function () {
+            $route.reload();
+        };
+        console.log($route.current.params.what);
 
         $scope.voteAdd = function(sessions,event){
             sessions.upVoteCount++;
